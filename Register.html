@@ -44,105 +44,108 @@
   <!-- Pages -->
   <main>
     <section id="Membership" class="page active">
-      <div class="container">
-        <h2>భారతీయ జనతా పార్టీ – కాకినాడ</h2>
-          <label for="name">పూర్తి పేరు</label>
-          <input type="text" id="name" name="name" placeholder="మీ పూర్తిపేరు ఇవ్వండి" required>
+  <div class="container">
+    <h2>భారతీయ జనతా పార్టీ – కాకినాడ</h2>
 
-          <label for="fathername">తండ్రి/తల్లి/భర్త పేరు</label>
-          <input type="text" id="fathername" name="fathername" placeholder="తండ్రి పేరు నమోదు చేయండి">
-          
-          <label for="Age">వయస్సు</label>
-          <input type="text" id="Age" name="Age"placeholder="వయస్సు">
-          
-          <label for="gender">లింగం</label>
-          <select id="gender" name="gender" required>
-            <option value="">ఎంచుకోండి</option>
-            <option value="male">పురుషుడు</option>
-            <option value="female">స్త్రీ</option>
-            <option value="other">ఇతర</option>
-          </select>
-          
-          <label for="address">చిరునామా</label>
-          <textarea id="address" name="address" rows="3" placeholder="పూర్తి చిరునామా నమోదు చేయండి" required></textarea>
-          
-          <label for="Village">గ్రామం</label>
-          <textarea id="Village" name="Village" rows="1" placeholder="గ్రామం" required></textarea>
-          
-          <label for="mandal">మండలం</label>
-          <textarea id="mandal" name="mandal" rows="1" placeholder="మండలం" required></textarea>
+    <form id="bjp">
+      <label for="name">పూర్తి పేరు</label>
+      <input type="text" id="name" name="name" placeholder="మీ పూర్తిపేరు ఇవ్వండి" required>
 
-          <label for="district">జిల్లా</label>
-          <textarea id="district" name="district" rows="1" placeholder="జిల్లా" required></textarea>
-          
-          <label for="state">రాష్ట్రం</label>
-          <textarea id="state" name="state" rows="1" placeholder="రాష్ట్రం" required></textarea>
+      <label for="fathername">తండ్రి/తల్లి/భర్త పేరు</label>
+      <input type="text" id="fathername" name="fathername" placeholder="తండ్రి పేరు నమోదు చేయండి">
 
-          <label for="contact">ఫోన్ నంబర్</label>
-          <input type="tel" id="contact" name="contact" placeholder="ఫోన్ నంబర్ నమోదు చేయండి" required>
-      
-          <label for="Profession">వృత్తి</label>
-          <input type="text" id="Profession" name="Profession" placeholder="మీ వృత్తిని నమోదు చేయండి">
+      <label for="Age">వయస్సు</label>
+      <input type="text" id="Age" name="Age" placeholder="వయస్సు">
 
-          <label for="Blood group">రక్త సమూహం</label>
-          <select id="Blood group" name="Blood group" required>
-            <option value="">ఎంచుకోండి</option>
-            <option value="A+">A+</option>
-            <option value="A-">A-</option>
-            <option value="B+">B+</option>
-            <option value="B-">B-</option>  
-            <option value="AB+">AB+</option>
-            <option value="AB-">AB-</option>
-            <option value="O+">O+</option>
-            <option value="O-">O-</option>
-          </select>
+      <label for="gender">లింగం</label>
+      <select id="gender" name="gender" required>
+        <option value="">ఎంచుకోండి</option>
+        <option value="male">పురుషుడు</option>
+        <option value="female">స్త్రీ</option>
+        <option value="other">ఇతర</option>
+      </select>
 
-          <button type="submit">నమోదు చేయండి</button>
-        </form>
-      
-  <p id="response"></p>
-        
-      <script>
-    const scriptURL = "https://script.google.com/macros/s/AKfycbyu7_fxid2HhhN_1Rom6c07nCOHVXFaphyuHEsiv5baIhHOm8BXVKcHH3vFUTyMKibSSw/exec";
+      <label for="address">చిరునామా</label>
+      <textarea id="address" name="address" rows="3" placeholder="పూర్తి చిరునామా నమోదు చేయండి" required></textarea>
 
-    document.getElementById("bjp").addEventListener("submit", e => {
-      e.preventDefault();
+      <label for="Village">గ్రామం</label>
+      <textarea id="Village" name="Village" rows="1" placeholder="గ్రామం" required></textarea>
 
-      const data = {
-        name: document.getElementById("name").value,
-        Fathername: document.getElementById("Fathername,").value,
-        Age: document.getElementById("Age").value,
-        gender: document.getElementById("gender").value,
-        Address : document.getElementById("address,").value,
-        Village: document.getElementById("Village,").value,
-        Mandal: document.getElementById("mandal,").value,
-        district: document.getElementById("district,").value,
-        state: document.getElementById("state,").value,
-        contact: document.getElementById("contact,").value,
-        Profession: document.getElementById("Profession,").value,
-        Bloodgroup: document.getElementById("Blood group,").value,
-      };
+      <label for="mandal">మండలం</label>
+      <textarea id="mandal" name="mandal" rows="1" placeholder="మండలం" required></textarea>
 
-       fetch(scriptURL, {
-        method: 'POST',
-        body: JSON.stringify(data),
-        headers: {
-          'Content-Type': 'application/json',
-        }
-      })
-      .then(response => response.json())
-      .then(result => {
-        document.getElementById('response').innerText = 'Success: ' + result.result;
-        document.getElementById('bjp').reset();
-      })
-      .catch(error => {
-        document.getElementById('response').innerText = 'Error: ' + error;
-        console.error('Error!', error.message);
-      })
-    });
-  </script>
+      <label for="district">జిల్లా</label>
+      <textarea id="district" name="district" rows="1" placeholder="జిల్లా" required></textarea>
+
+      <label for="state">రాష్ట్రం</label>
+      <textarea id="state" name="state" rows="1" placeholder="రాష్ట్రం" required></textarea>
+
+      <label for="contact">ఫోన్ నంబర్</label>
+      <input type="tel" id="contact" name="contact" placeholder="ఫోన్ నంబర్ నమోదు చేయండి" required>
+
+      <label for="Profession">వృత్తి</label>
+      <input type="text" id="Profession" name="Profession" placeholder="మీ వృత్తిని నమోదు చేయండి">
+
+      <label for="Bloodgroup">రక్త సమూహం</label>
+      <select id="Bloodgroup" name="Bloodgroup" required>
+        <option value="">ఎంచుకోండి</option>
+        <option value="A+">A+</option>
+        <option value="A-">A-</option>
+        <option value="B+">B+</option>
+        <option value="B-">B-</option>  
+        <option value="AB+">AB+</option>
+        <option value="AB-">AB-</option>
+        <option value="O+">O+</option>
+        <option value="O-">O-</option>
+      </select>
+
+      <button type="submit">నమోదు చేయండి</button>
+    </form>
+
+    <p id="response"></p>
+
+    <script>
+      const scriptURL = "https://script.google.com/macros/s/AKfycbyu7_fxid2HhhN_1Rom6c07nCOHVXFaphyuHEsiv5baIhHOm8BXVKcHH3vFUTyMKibSSw/exec";
+
+      document.getElementById("bjp").addEventListener("submit", e => {
+        e.preventDefault();
+
+        const data = {
+          name: document.getElementById("name").value,
+          Fathername: document.getElementById("fathername").value,
+          Age: document.getElementById("Age").value,
+          Gender: document.getElementById("gender").value,
+          Address: document.getElementById("address").value,
+          Village: document.getElementById("Village").value,
+          Mandal: document.getElementById("mandal").value,
+          District: document.getElementById("district").value,
+          State: document.getElementById("state").value,
+          Contact: document.getElementById("contact").value,
+          Profession: document.getElementById("Profession").value,
+          Bloodgroup: document.getElementById("Bloodgroup").value,
+        };
+
+        fetch(scriptURL, {
+          method: 'POST',
+          body: JSON.stringify(data),
+          headers: {
+            'Content-Type': 'application/json',
+          }
+        })
+        .then(response => response.json())
+        .then(result => {
+          document.getElementById('response').innerText = 'Success: ' + result.result;
+          document.getElementById('bjp').reset();
+        })
+        .catch(error => {
+          document.getElementById('response').innerText = 'Error: ' + error;
+          console.error('Error!', error.message);
+        });
+      });
+    </script>
   </div>
-    </section>
+</section>
+
 
     <section id="News" class="page">
       <h1>News / వార్తలు</h1>
@@ -168,4 +171,5 @@
 
 </body>
 </html>
+
 
