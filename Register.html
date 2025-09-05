@@ -100,10 +100,12 @@
           <button type="submit">నమోదు చేయండి</button>
         </form>
       
+  <p id="response"></p>
+        
       <script>
     const scriptURL = "https://script.google.com/macros/s/AKfycbyu7_fxid2HhhN_1Rom6c07nCOHVXFaphyuHEsiv5baIhHOm8BXVKcHH3vFUTyMKibSSw/exec";
 
-    document.getElementById("regForm").addEventListener("submit", e => {
+    document.getElementById("bjp").addEventListener("submit", e => {
       e.preventDefault();
 
       const data = {
@@ -121,13 +123,22 @@
         Bloodgroup: document.getElementById("Blood group,").value,
       };
 
-      fetch(scriptURL, {
-        method: "POST",
-        body: JSON.stringify(data)
+       fetch(scriptURL, {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+          'Content-Type': 'application/json',
+        }
       })
-      .then(res => res.json())
-      .then(response => alert("Form Submitted Successfully!"))
-      .catch(err => alert("Error: " + err));
+      .then(response => response.json())
+      .then(result => {
+        document.getElementById('response').innerText = 'Success: ' + result.result;
+        document.getElementById('bjp').reset();
+      })
+      .catch(error => {
+        document.getElementById('response').innerText = 'Error: ' + error;
+        console.error('Error!', error.message);
+      })
     });
   </script>
   </div>
@@ -157,3 +168,4 @@
 
 </body>
 </html>
+
